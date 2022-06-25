@@ -1,0 +1,36 @@
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic.list import ListView
+from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+from .models import Post
+
+# Create your views here.
+
+# ListView
+class PostListView(ListView):
+    model = Post
+    
+# CreateView 
+class PostCreateView(CreateView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy("blog:all")
+    
+# DetailView
+class PostDetailView(DetailView):
+    model = Post
+    
+# UpdateView
+class PostUpdateView(UpdateView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy("blog:all")
+    
+# DeleteView
+class PostDeleteView(DeleteView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy("blog:all")
